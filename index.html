@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Showcase</title>
+    <link rel="stylesheet" href="animation.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 1em;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+.paragraph{
+    color: green;
+    /* background-color: chocolate; */
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* Filter Buttons */
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.filter-btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.filter-btn.active {
+    background-color: #4A90E2;
+    color: white;
+}
+
+/* Carousel */
+.carousel-container {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.project-carousel {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.project-card {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.project-card.active {
+    display: block;
+    opacity: 1;
+}
+
+.project-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.project-info {
+    padding: 2rem;
+}
+
+.project-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.project-description {
+    color: #666;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background-color: #4A90E2;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.project-link:hover {
+    background-color: #357ABD;
+}
+
+/* Navigation Buttons */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.nav-btn:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+    left: -20px;
+}
+
+.next-btn {
+    right: -20px;
+}
+
+.project-counter {
+    text-align: center;
+    margin-top: 1rem;
+    color: #666;
+}
+
+/* Animation */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-in {
+    animation: slideIn 0.5s ease forwards;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .filter-buttons {
+        flex-wrap: wrap;
+    }
+    
+    .project-image {
+        height: 300px;
+    }
+    
+    .nav-btn {
+        width: 35px;
+        height: 35px;
+    }
+}
+/* Preloader Container */
+#preloader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #fff; /* Background color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensures it stays above everything */
+}
+
+/* Spinner Animation */
+/* From Uiverse.io by Li-Deheng */ 
+#loader{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: black; /* Background color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensures it stays above everything */
+}
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  --color: hsl(0, 0%, 87%);
+  --animation: 2s ease-in-out infinite;
+}
+
+.loader .circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border: solid 2px var(--color);
+  border-radius: 50%;
+  margin: 0 10px;
+  background-color: transparent;
+  animation: circle-keys var(--animation);
+}
+
+.loader .circle .dot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--color);
+  animation: dot-keys var(--animation);
+}
+
+.loader .circle .outline {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  animation: outline-keys var(--animation);
+}
+
+.circle:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.circle:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.circle:nth-child(4) {
+  animation-delay: 0.9s;
+}
+
+.circle:nth-child(5) {
+  animation-delay: 1.2s;
+}
+
+.circle:nth-child(2) .dot {
+  animation-delay: 0.3s;
+}
+
+.circle:nth-child(3) .dot {
+  animation-delay: 0.6s;
+}
+
+.circle:nth-child(4) .dot {
+  animation-delay: 0.9s;
+}
+
+.circle:nth-child(5) .dot {
+  animation-delay: 1.2s;
+}
+
+.circle:nth-child(1) .outline {
+  animation-delay: 0.9s;
+}
+
+.circle:nth-child(2) .outline {
+  animation-delay: 1.2s;
+}
+
+.circle:nth-child(3) .outline {
+  animation-delay: 1.5s;
+}
+
+.circle:nth-child(4) .outline {
+  animation-delay: 1.8s;
+}
+
+.circle:nth-child(5) .outline {
+  animation-delay: 2.1s;
+}
+
+@keyframes circle-keys {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes dot-keys {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes outline-keys {
+  0% {
+    transform: scale(0);
+    outline: solid 20px var(--color);
+    outline-offset: 0;
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    outline: solid 0 transparent;
+    outline-offset: 20px;
+    opacity: 0;
+  }
+}
+
+/* Hide Preloader when page loads */
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+/* From Uiverse.io by mobinkakei */ 
+.btn {
+    margin-top: 1em;
+    margin-left: 40%;
+    place-content: center;
+  --color1: #1a8516;
+  --color2: #236b19;
+  perspective: 1000px;
+  padding: 1em 1em;
+  background: linear-gradient(var(--color1), var(--color2));
+  border: none;
+  outline: none;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: #fff;
+  text-shadow: 0 10px 10px #000;
+  cursor: pointer;
+  transform: rotateX(70deg) rotateZ(30deg);
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+.btn::before {
+  content: "";
+  width: 100%;
+  height: 15px;
+  background-color: var(--color2);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: rotateX(90deg);
+  transform-origin: bottom;
+}
+
+.btn::after {
+  content: "";
+  width: 15px;
+  height: 100%;
+  background-color: var(--color1);
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: rotateY(-90deg);
+  transform-origin: right;
+}
+
+.btn:hover {
+  transform: rotateX(30deg) rotateZ(0);
+}
+
+
+    </style>
+
+
+     <!-- Preloader -->
+<!-- From Uiverse.io by Li-Deheng --> 
+<div class="loader" id="loader">
+    <div class="circle">
+      <div class="dot"></div>
+      <div class="outline"></div>
+    </div>
+    <div class="circle">
+      <div class="dot"></div>
+      <div class="outline"></div>
+    </div>
+    <div class="circle">
+      <div class="dot"></div>
+      <div class="outline"></div>
+    </div>
+    <div class="circle">
+      <div class="dot"></div>
+      <div class="outline"></div>
+    </div>
+  </div>
+
+<!-- background -->
+<div class="background-animation"></div>
+
+    <div class="container">
+        <h1 style="color: blue;">My Projects</h1>
+        <p class="paragraph">Explore my latest work in Web Development and Artificial Intelligence.</p>
+        
+        <!-- Filter Buttons -->
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="web">Web Development</button>
+            <button class="filter-btn" data-filter="ai">AI Projects</button>
+        </div>
+
+        <!-- Project Carousel -->
+        <div class="carousel-container">
+            <button class="nav-btn prev-btn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <div class="project-carousel">
+                <!-- Projects will be dynamically added here -->
+            </div>
+
+            <button class="nav-btn next-btn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <!-- Project Counter -->
+        <div class="project-counter">
+            <span id="current">1</span> / <span id="total">1</span>
+        </div>
+        <a href="http://cruzlordtek.netlify.app">
+            <!-- From Uiverse.io by mobinkakei --> 
+    
+            <button class="btn">Visit Portfolio</button>
+        </a>
+    </div>
+    
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    // Wait until the page is fully loaded, then fade out the preloader
+    setTimeout(() => {
+        document.getElementById("loader").classList.add("hidden");
+    }, 5000); // 1 second delay before removing preloader
+});
+        // Project Data
+const projects = [
+    {
+        id: 1,
+        title: "Doctor booking scheme",
+        description: "A Doctor booking management system.",
+        image: "image/clinic.png",
+        category: "web",
+        liveUrl: "https://cruz-healthease.netlify.app"
+    },
+    {
+        id: 2,
+        title: "A Web site for teams of IT experts",
+        description: "Deep learning model that generates artistic images from text descriptions using stable diffusion.",
+        image: "image/team-website.png",
+        category: "web",
+        liveUrl: "https://cruz-blog.netlify.app"
+    },
+    {
+        id: 3,
+        title: "Clone NASA",
+        description: "Deep learning model that generates artistic images from text descriptions using stable diffusion.",
+        image: "image/Nasa web.png",
+        category: "web",
+        liveUrl: "https://example.com/project2"
+    },
+    {
+        id: 4,
+        title: "Clone NASA",
+        description: "Deep learning model that generates artistic images from text descriptions using stable diffusion.",
+        image: "image/Estate-website.png",
+        category: "web",
+        liveUrl: "https://example.com/project2"
+    },
+    {
+        id: 5,
+        title: "Resturant Website",
+        description: "Deep learning model that generates artistic images from text descriptions using stable diffusion.",
+        image: "image/resturant.png",
+        category: "web",
+        liveUrl: "https://example.com/project2"
+    },
+    // Add more projects here
+];
+
+// Initialize variables
+let currentIndex = 0;
+let filteredProjects = [...projects];
+
+// DOM Elements
+const carousel = document.querySelector('.project-carousel');
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
+const filterBtns = document.querySelectorAll('.filter-btn');
+const currentCount = document.getElementById('current');
+const totalCount = document.getElementById('total');
+
+// Create project cards
+function createProjectCard(project) {
+    return `
+        <div class="project-card" data-category="${project.category}">
+            <img src="${project.image}" alt="${project.title}" class="project-image">
+            <div class="project-info">
+                <h2 class="project-title">${project.title}</h2>
+                <p class="project-description">${project.description}</p>
+                <a href="${project.liveUrl}" target="_blank" class="project-link">
+                    View Live
+                    <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+        </div>
+    `;
+}
+
+// Initialize carousel
+function initCarousel() {
+    carousel.innerHTML = filteredProjects.map(project => createProjectCard(project)).join('');
+    updateActiveCard();
+    updateCounter();
+}
+
+// Update active card
+function updateActiveCard() {
+    document.querySelectorAll('.project-card').forEach((card, index) => {
+        card.classList.remove('active', 'slide-in');
+        if (index === currentIndex) {
+            card.classList.add('active', 'slide-in');
+        }
+    });
+}
+
+// Update counter
+function updateCounter() {
+    currentCount.textContent = currentIndex + 1;
+    totalCount.textContent = filteredProjects.length;
+}
+
+// Navigation functions
+function nextProject() {
+    currentIndex = (currentIndex + 1) % filteredProjects.length;
+    updateActiveCard();
+    updateCounter();
+}
+
+function prevProject() {
+    currentIndex = (currentIndex - 1 + filteredProjects.length) % filteredProjects.length;
+    updateActiveCard();
+    updateCounter();
+}
+
+// Filter functions
+function filterProjects(category) {
+    filteredProjects = category === 'all' 
+        ? [...projects]
+        : projects.filter(project => project.category === category);
+    
+    currentIndex = 0;
+    initCarousel();
+}
+
+// Event Listeners
+prevBtn.addEventListener('click', prevProject);
+nextBtn.addEventListener('click', nextProject);
+
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filterProjects(btn.dataset.filter);
+    });
+});
+
+// Initialize the carousel
+initCarousel();
+
+// Optional: Keyboard navigation
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') prevProject();
+    if (e.key === 'ArrowRight') nextProject();
+});
+    </script>
+</body>
+</html>

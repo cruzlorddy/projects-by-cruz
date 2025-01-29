@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Showcase</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Animate.css for Animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animation.css">
+</head>
+<body>
+
+<!-- Header Section -->
+<section class="text-center py-5">
+    <h1 class="fw-bold text-primary" ><i class="bi bi-check-all"></i>My Projects</h1>
+    <p class="">Explore my latest work in Web Development and Artificial Intelligence.</p>
+
+    <!-- Filter Buttons -->
+    <div class="btn-group">
+        <button class="btn btn-outline-success active filter-btn" data-category="all">All Projects</button>
+        <button class="btn btn-outline-primary filter-btn" data-category="web">Web Development</button>
+        <button class="btn btn-outline-light filter-btn" data-category="ai">Artificial Intelligence</button>
+    </div>
+</section>
+
+<!-- Project Showcase Carousel -->
+ <!-- Preloader -->
+<div id="preloader">
+    <div class="spinner"></div>
+</div>
+<div class="background-animation"></div>
+
+<div class="container animated fadeInUp "  data-wow-delay="0.5s">
+    <div class="row g-4 justify-content-center">
+        
+        <!-- Web Project 1 -->
+        <div class="col-md-4 project-card animate__animated animate__fadeInUp" data-category="web">
+            <div class="card shadow">
+                <img src="image/Estate-website.png" class="card-img-top" alt="Web Project 1">
+                <div class="card-body">
+                    <h5 class="card-title">Real Estate Website</h5>
+                    <p class="card-text">A modern, responsive online store built with React and Firebase.</p>
+                    <a href="https://example.com" target="_blank" class="btn btn-success">Live Demo</a>
+                </div>
+            </div>
+        </div>
+        <!-- Web Project 3 -->
+        <div class="col-md-4 project-card animate__animated animate__fadeInUp" data-category="web">
+            <div class="card shadow">
+                <img src="image/team-website.png" class="card-img-top" alt="Web Project 1">
+                <div class="card-body">
+                    <h5 class="card-title">Real Estate Website</h5>
+                    <p class="card-text">A modern, responsive online store built with React and Firebase.</p>
+                    <a href="https://example.com" target="_blank" class="btn btn-success">Live Demo</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Project 1 -->
+        <div class="col-md-4 project-card animate__animated animate__fadeInUp" data-category="ai">
+            <div class="card shadow">
+                <img src="img/ai-project-1.jpg" class="card-img-top" alt="AI Project 1">
+                <div class="card-body">
+                    <h5 class="card-title">Chatbot Assistant</h5>
+                    <p class="card-text">An AI chatbot powered by GPT-4 and trained on custom data.</p>
+                    <a href="https://example.com" target="_blank" class="btn btn-danger">Live Demo</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Web Project 2 -->
+        <div class="col-md-4 project-card animate__animated animate__fadeInUp" data-category="web">
+            <div class="card shadow">
+                <img src="image/Nasa web.png" class="card-img-top" alt="Web Project 2">
+                <div class="card-body">
+                    <h5 class="card-title">Portfolio Website</h5>
+                    <p class="card-text">A personal portfolio site with animations and dynamic sections.</p>
+                    <a href="https://example.com" target="_blank" class="btn btn-success">Live Demo</a>
+                </div>
+            </div>
+        </div>
+        <!-- Web Project 5 -->
+        <div class="col-md-4 project-card animate__animated animate__fadeInUp" data-category="web">
+            <div class="card shadow">
+                <img src="image/clinic.png" class="card-img-top" alt="Web Project 1">
+                <div class="card-body">
+                    <h5 class="card-title">Real Estate Website</h5>
+                    <p class="card-text">A modern, responsive online store built with React and Firebase.</p>
+                    <a href="https://example.com" target="_blank" class="btn btn-success">Live Demo</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Project 2 -->
+        <div class="col-md-4 project-card animate__animated animate__fadeInUp" data-category="ai">
+            <div class="card shadow">
+                <img src="img/ai-project-2.jpg" class="card-img-top" alt="AI Project 2">
+                <div class="card-body">
+                    <h5 class="card-title">AI Image Generator</h5>
+                    <p class="card-text">A deep learning model that generates images from text input.</p>
+                    <a href="https://example.com" target="_blank" class="btn btn-danger">Live Demo</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Bootstrap & Custom Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Custom JavaScript -->
+<script src="script.js"></script>
+
+</body>
+</html>
