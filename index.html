@@ -93,7 +93,7 @@ h1 {
 .project-image {
     width: 100%;
     height: 400px;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .project-info {
@@ -365,7 +365,7 @@ h1 {
 /* From Uiverse.io by mobinkakei */ 
 .btn {
     margin-top: 1em;
-    margin-left: 40%;
+    margin-left: 30%;
     place-content: center;
   --color1: #1a8516;
   --color2: #236b19;
@@ -450,6 +450,7 @@ h1 {
             <button class="filter-btn active" data-filter="all">All Projects</button>
             <button class="filter-btn" data-filter="web">Web Development</button>
             <button class="filter-btn" data-filter="ai">AI Projects</button>
+            <button class="filter-btn" data-filter="graphics">Graphic/Fyler designs</button>
         </div>
 
         <!-- Project Carousel -->
@@ -499,7 +500,7 @@ const projects = [
     {
         id: 2,
         title: "A Web site for teams of IT experts",
-        description: "Deep learning model that generates artistic images from text descriptions using stable diffusion.",
+        description: "I built a website for my team of experts with different section of IT skills.",
         image: "image/team-website.png",
         category: "web",
         liveUrl: "https://cruz-blog.netlify.app"
@@ -507,15 +508,15 @@ const projects = [
     {
         id: 3,
         title: "Clone NASA",
-        description: "Deep learning model that generates artistic images from text descriptions using stable diffusion.",
+        description: "Created a landing page for a NASA but not a real one it was just for fun.",
         image: "image/Nasa web.png",
         category: "web",
         liveUrl: "https://example.com/project2"
     },
     {
         id: 4,
-        title: "Clone NASA",
-        description: "Deep learning model that generates artistic images from text descriptions using stable diffusion.",
+        title: "Real Estate Website",
+        description: "A website where house, hotel, shop owners can upload their properties either for sale or for rent and their location and prices as well as users can see and buy and rent any of their choices ",
         image: "image/Estate-website.png",
         category: "web",
         liveUrl: "https://example.com/project2"
@@ -523,10 +524,25 @@ const projects = [
     {
         id: 5,
         title: "Resturant Website",
-        description: "Deep learning model that generates artistic images from text descriptions using stable diffusion.",
+        description: "A website where you can order food but not functional for now.",
         image: "image/resturant.png",
         category: "web",
-        liveUrl: "https://example.com/project2"
+        liveUrl: "https://cruz-bliss.netlify.app"
+    },
+    {
+        id: 8,
+        title: "Pricing guide for a business",
+        description: "Fyler sent to client instead of negotiating too much",
+        image: "image/graph1.png",
+        category: "graphics",
+    },
+    {
+        id: 7,
+        title: "For a building company",
+        description: "Fyler to advertise a business that sells building materials.",
+        image: "image/graph2.png",
+        category: "graphics",
+      
     },
     // Add more projects here
 ];
